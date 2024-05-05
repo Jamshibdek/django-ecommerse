@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,12 +21,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-4rwn(c&3v_1$hokwn&y#^xb4%hubax5l@(%(pp*gvfi0*l3%wt'
+SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ['*']
+DEBUG = config("DEBUG", default=False, cast=bool)
+ALLOWED_HOSTS = ['django-mohirdev-demo.uz', "www.django-mohirdev-demo.uz", "127.0.0.1"]
 
 
 # Application definition
@@ -124,12 +124,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'static'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,'adana/static')
-]
+STATIC_ROOT = "/home/djangomo/django-mohirdev-demo.uz/django/staticfiles"
+STATICFILES_DIRS = ("/home/djangomo/django-mohirdev-demo.uz/django/static",)
+# STATIC_ROOT = BASE_DIR / 'static'
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR,'adana/static')
+# ]
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
+MEDIA_ROOT = "/home/djangomo/django-mohirdev-demo.uz/django/media"
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 

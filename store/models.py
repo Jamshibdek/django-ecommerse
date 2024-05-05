@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from category.models import Category
-
+ 
 # Create your models here.
 class Product(models.Model):
     name = models.CharField(max_length=100, unique=True)
